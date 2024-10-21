@@ -12,9 +12,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.credentials.Credential;
+import androidx.credentials.CredentialManager;
+import androidx.credentials.CredentialManagerCallback;
+import androidx.credentials.CustomCredential;
+import androidx.credentials.GetCredentialRequest;
+import androidx.credentials.GetCredentialResponse;
+import androidx.credentials.PasswordCredential;
+import androidx.credentials.PublicKeyCredential;
+import androidx.credentials.exceptions.GetCredentialException;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.BaseActivityEventListener;
@@ -41,7 +51,8 @@ import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.libraries.identity.googleid.GetGoogleIdOption;
+import com.google.android.libraries.identity.googleid.GetSignInWithGoogleOption;
+import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -172,11 +183,111 @@ public class RNGoogleSigninModule extends NativeGoogleSigninSpec {
 
     @ReactMethod
     public void signIn(final ReadableMap config, Promise promise) {
-      GetGoogleIdOption googleIdOption = new GetGoogleIdOption.Builder()
-        .setFilterByAuthorizedAccounts(true)
-        .setServerClientId("590500460359-r840e25i8r6em0p9oo6g7o9s60q3hklk.apps.googleusercontent.com")
-        .setAutoSelectEnabled(true)
-        .build();
+//      GetGoogleIdOption googleIdOption = new GetGoogleIdOption.Builder()
+//        .setFilterByAuthorizedAccounts(true)
+//        .setServerClientId("590500460359-r840e25i8r6em0p9oo6g7o9s60q3hklk.apps.googleusercontent.com")
+//        .setAutoSelectEnabled(true)
+//        .build();
+//
+//      GetCredentialRequest request = new GetCredentialRequest.Builder()
+//        .addCredentialOption(googleIdOption)
+//        .build();
+//
+//
+//      CredentialManager credentialManager = CredentialManager.create(this.getReactApplicationContext());
+//
+//    credentialManager.getCredentialAsync(
+//            this.getReactApplicationContext().getApplicationContext(),
+//            request,
+//            null,
+//            AsyncTask.THREAD_POOL_EXECUTOR,
+//            new CredentialManagerCallback<GetCredentialResponse, GetCredentialException>() {
+//                @Override
+//                public void onResult(GetCredentialResponse result) {
+//                    handleSignIn(result);
+//                }
+//
+//                @Override
+//                public void onError(GetCredentialException e) {
+//                    handleFailure(e);
+//                }
+//            }
+//        );
+
+        Activity activityContext = this.getCurrentActivity();
+        GetSignInWithGoogleOption signInWithGoogleOption =  new GetSignInWithGoogleOption.Builder("590500460359-r840e25i8r6em0p9oo6g7o9s60q3hklk.apps.googleusercontent.com")
+                .build();
+
+              GetCredentialRequest request = new GetCredentialRequest.Builder()
+                      .addCredentialOption(signInWithGoogleOption)
+                      .build();
+
+      CredentialManager credentialManager = CredentialManager.create(activityContext);
+
+        credentialManager.getCredentialAsync(
+                activityContext,
+                request,
+                null,
+                AsyncTask.THREAD_POOL_EXECUTOR,
+                new CredentialManagerCallback<GetCredentialResponse, GetCredentialException>() {
+                    @Override
+                    public void onResult(GetCredentialResponse result) {
+                        promise.resolve(handleSignIn(result));
+                    }
+
+                    @Override
+                    public void onError(GetCredentialException e) {
+                        promise.reject("Error", handleFailure(e));
+
+                    }
+                }
+        );
+    }
+
+
+    private String handleFailure(GetCredentialException e) {
+        Log.e("mar", "Unexpected type of credential" + e.getMessage());
+        Toast.makeText(this.getCurrentActivity(), "Failure " + e.getMessage(), Toast.LENGTH_LONG).show();
+        return e.getMessage();
+    }
+
+    public WritableMap handleSignIn(GetCredentialResponse result) {
+        // Handle the successfully returned credential.
+        Credential credential = result.getCredential();
+
+        if (credential instanceof PublicKeyCredential) {
+            String responseJson = ((PublicKeyCredential) credential).getAuthenticationResponseJson();
+            // Share responseJson i.e. a GetCredentialResponse on your server to validate and authenticate
+            Log.e("mar1", responseJson);
+        } else if (credential instanceof PasswordCredential) {
+            String username = ((PasswordCredential) credential).getId();
+            String password = ((PasswordCredential) credential).getPassword();
+            // Use id and password to send to your server to validate and authenticate
+            Log.e("mar1", username + "--" + password);
+        } else if (credential instanceof CustomCredential) {
+            if (GoogleIdTokenCredential.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL.equals(credential.getType())) {
+                // Use googleIdTokenCredential and extract id to validate and
+                // authenticate on your server
+                GoogleIdTokenCredential googleIdTokenCredential = GoogleIdTokenCredential.createFrom(((CustomCredential) credential).getData());
+
+                WritableMap data = Arguments.createMap();
+
+                data.putString("picture", googleIdTokenCredential.getProfilePictureUri().toString());
+                data.putString("displayName", googleIdTokenCredential.getDisplayName());
+                data.putString("email", googleIdTokenCredential.getId());
+                data.putString("givenName", googleIdTokenCredential.getGivenName());
+                data.putString("keyIDToken", googleIdTokenCredential.getIdToken());
+                data.putString("familyName", googleIdTokenCredential.getFamilyName());
+                return data;
+            } else {
+                // Catch any unrecognized custom credential type here.
+                Log.e("mar", "Unexpected type of credential1");
+            }
+        } else {
+            // Catch any unrecognized credential type here.
+            Log.e("mar", "Unexpected type of credential");
+        }
+        return null;
     }
 
     @ReactMethod
