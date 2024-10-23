@@ -1,9 +1,8 @@
-package com.reactnativegooglesignin;
+package com.marudhupandiyang.rtngauth;
 
 import android.util.Log;
 
 import com.facebook.react.bridge.Promise;
-
 
 public class PromiseWrapper {
     private Promise promise;

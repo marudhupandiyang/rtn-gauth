@@ -36,7 +36,7 @@ def safeExtGet(prop, fallback) {
 android {
   def agpVersion = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION
   if (agpVersion.tokenize('.')[0].toInteger() >= 7) {
-    namespace "com.reactnativegooglesignin"
+    namespace "com.marudhupandiyang.rtngauth"
   }
   compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
 
@@ -53,16 +53,6 @@ android {
     minSdkVersion getExtOrIntegerDefault('minSdkVersion')
     targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
     buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
-  }
-
-  sourceSets.main {
-    java {
-      if (isNewArchitectureEnabled()) {
-        srcDirs += 'src/newArch/java'
-      } else {
-        srcDirs += 'src/oldArch/java'
-      }
-    }
   }
 }
 

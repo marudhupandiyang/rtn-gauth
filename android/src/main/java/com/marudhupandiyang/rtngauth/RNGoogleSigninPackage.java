@@ -1,4 +1,4 @@
-package com.reactnativegooglesignin;
+package com.marudhupandiyang.rtngauth;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,6 +9,8 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.module.model.ReactModuleInfo;
 import com.facebook.react.module.model.ReactModuleInfoProvider;
 import com.facebook.react.uimanager.ViewManager;
+import com.marudhupandiyang.rtngauth.RNGoogleSigninModule;
+import com.marudhupandiyang.rtngauth.BuildConfig;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -48,11 +50,4 @@ public class RNGoogleSigninPackage extends TurboReactPackage {
     };
   }
 
-  @NonNull
-  @Override
-  public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-    return Arrays.asList(
-      new RNGoogleSigninButtonViewManager()
-    );
-  }
 }

@@ -1,10 +1,7 @@
 {
-  "name": "@react-native-google-signin/google-signin",
-  "version": "13.1.0",
+  "name": "rtn-gauth",
+  "version": "0.0.1",
   "description": "Google sign in for your react native applications",
-  "main": "lib/commonjs/index",
-  "module": "lib/module/index",
-  "types": "lib/typescript/src/index.d.ts",
   "react-native": "src/index",
   "source": "src/index",
   "files": [
@@ -55,13 +52,13 @@
     "android",
     "web"
   ],
-  "repository": "https://github.com/react-native-google-signin/google-signin",
-  "author": "Vojtech Novak <vonovak@gmail.com> (https://github.com/vonovak)",
+  "repository": "https://github.com/marudhupandiyang/rtn-gauth",
+  "author": "Marudhu Pandiyan G <marudhupandiyang@gmail.com> (https://github.com/marudhupandiyang)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/react-native-google-signin/google-signin/issues"
+    "url": "https://github.com/marudhupandiyang/rtn-gauth/issues"
   },
-  "homepage": "https://github.com/react-native-google-signin/google-signin#readme",
+  "homepage": "https://github.com/marudhupandiyang/rtn-gauth#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

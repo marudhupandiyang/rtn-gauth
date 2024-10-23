@@ -1,13 +1,10 @@
-package com.reactnativegooglesignin
-
-import com.google.android.gms.auth.api.signin.GoogleSignInStatusCodes
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.common.api.UnsupportedApiCallException
+package com.marudhupandiyang.rtngauth;
 
 class ErrorDto(e: Exception, errCodeFallback: String?) {
   var code: String? = null
   var message: String? = null
 
+  /*
   init {
     // Google's exceptions are not very helpful and error codes can be context-sensitive
     val localizedMessage = e.localizedMessage ?: e.message
@@ -39,4 +36,5 @@ class ErrorDto(e: Exception, errCodeFallback: String?) {
       this.message = localizedMessage
     }
   }
+  */
 }
