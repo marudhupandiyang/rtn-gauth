@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-
-		5E555C0D2413F4C50049A1A2 /* GoogleSignin.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* GoogleSignin.m */; };
-
+		A5D9E119CEFD16371B08CCEC /* Pods_GoogleSignin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37B96C70800FB02FBE033D63 /* Pods_GoogleSignin.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,11 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		134814201AA4EA6300B7C361 /* libGoogleSignin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGoogleSignin.a; sourceTree = BUILT_PRODUCTS_DIR; };
-
+		134814201AA4EA6300B7C361 /* libRTNGauth.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRTNGauth.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		37B96C70800FB02FBE033D63 /* Pods_GoogleSignin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleSignin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		62DCCD2DAA3E71A6F51ABD12 /* Pods-GoogleSignin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleSignin.release.xcconfig"; path = "Target Support Files/Pods-GoogleSignin/Pods-GoogleSignin.release.xcconfig"; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* GoogleSignin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleSignin.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* GoogleSignin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleSignin.m; sourceTree = "<group>"; };
-
+		C43008EE670FAA7085BFA22D /* Pods-GoogleSignin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleSignin.debug.xcconfig"; path = "Target Support Files/Pods-GoogleSignin/Pods-GoogleSignin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5D9E119CEFD16371B08CCEC /* Pods_GoogleSignin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,29 +46,47 @@
 		134814211AA4EA7D00B7C361 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				134814201AA4EA6300B7C361 /* libGoogleSignin.a */,
+				134814201AA4EA6300B7C361 /* libRTNGauth.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		14C9064F0686B69B65A8B86B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C43008EE670FAA7085BFA22D /* Pods-GoogleSignin.debug.xcconfig */,
+				62DCCD2DAA3E71A6F51ABD12 /* Pods-GoogleSignin.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-
 				B3E7B5881CC2AC0600A0062D /* GoogleSignin.h */,
 				B3E7B5891CC2AC0600A0062D /* GoogleSignin.m */,
-
 				134814211AA4EA7D00B7C361 /* Products */,
+				14C9064F0686B69B65A8B86B /* Pods */,
+				7D4AE6E3FD03F46141101023 /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		7D4AE6E3FD03F46141101023 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				37B96C70800FB02FBE033D63 /* Pods_GoogleSignin.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		58B511DA1A9E6C8500147676 /* GoogleSignin */ = {
+		58B511DA1A9E6C8500147676 /* RTNGauth */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "GoogleSignin" */;
+			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RTNGauth" */;
 			buildPhases = (
+				926A243F76535FB07198A924 /* [CP] Check Pods Manifest.lock */,
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
 				58B511D91A9E6C8500147676 /* CopyFiles */,
@@ -77,9 +95,9 @@
 			);
 			dependencies = (
 			);
-			name = GoogleSignin;
+			name = RTNGauth;
 			productName = RCTDataManager;
-			productReference = 134814201AA4EA6300B7C361 /* libGoogleSignin.a */;
+			productReference = 134814201AA4EA6300B7C361 /* libRTNGauth.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -96,7 +114,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "GoogleSignin" */;
+			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RTNGauth" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -109,19 +127,41 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				58B511DA1A9E6C8500147676 /* GoogleSignin */,
+				58B511DA1A9E6C8500147676 /* RTNGauth */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		926A243F76535FB07198A924 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoogleSignin-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		58B511D71A9E6C8500147676 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
-				B3E7B58A1CC2AC0600A0062D /* GoogleSignin.m in Sources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +263,7 @@
 		};
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C43008EE670FAA7085BFA22D /* Pods-GoogleSignin.debug.xcconfig */;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -232,14 +273,14 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = GoogleSignin;
+				PRODUCT_NAME = RTNGauth;
 				SKIP_INSTALL = YES;
-
 			};
 			name = Debug;
 		};
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62DCCD2DAA3E71A6F51ABD12 /* Pods-GoogleSignin.release.xcconfig */;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -249,16 +290,15 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = GoogleSignin;
+				PRODUCT_NAME = RTNGauth;
 				SKIP_INSTALL = YES;
-
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "GoogleSignin" */ = {
+		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RTNGauth" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511ED1A9E6C8500147676 /* Debug */,
@@ -267,7 +307,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "GoogleSignin" */ = {
+		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RTNGauth" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511F01A9E6C8500147676 /* Debug */,
