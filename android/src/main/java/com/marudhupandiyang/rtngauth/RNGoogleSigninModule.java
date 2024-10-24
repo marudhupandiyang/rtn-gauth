@@ -1,16 +1,9 @@
 package com.marudhupandiyang.rtngauth;
 
-import static com.marudhupandiyang.rtngauth.PromiseWrapper.ASYNC_OP_IN_PROGRESS;
-
-import android.accounts.Account;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.credentials.Credential;
 import androidx.credentials.CredentialManager;
 import androidx.credentials.CredentialManagerCallback;
@@ -22,40 +15,18 @@ import androidx.credentials.PublicKeyCredential;
 import androidx.credentials.exceptions.GetCredentialException;
 
 import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.BaseActivityEventListener;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.bridge.UiThreadUtil;
 import com.facebook.react.bridge.WritableMap;
-import com.google.android.gms.auth.GoogleAuthException;
-import com.google.android.gms.auth.GoogleAuthUtil;
-import com.google.android.gms.auth.UserRecoverableAuthException;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInStatusCodes;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.CommonStatusCodes;
-import com.google.android.gms.common.api.Scope;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.identity.googleid.GetSignInWithGoogleOption;
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential;
 import com.facebook.react.turbomodule.core.interfaces.TurboModule;
 import com.facebook.react.bridge.ReactModuleWithSpec;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
-
-import java.io.IOException;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Map;
 
 public class RNGoogleSigninModule extends ReactContextBaseJavaModule implements ReactModuleWithSpec, TurboModule {
   public static final String NAME = "RNGoogleSignin";
@@ -65,6 +36,7 @@ public class RNGoogleSigninModule extends ReactContextBaseJavaModule implements 
   private GetSignInWithGoogleOption signInWithGoogleOption;
   private GetCredentialRequest request;
   private CredentialManager credentialManager;
+  private String googleClientId;
 
     @Override
     public String getName() {
@@ -74,15 +46,7 @@ public class RNGoogleSigninModule extends ReactContextBaseJavaModule implements 
     public RNGoogleSigninModule(final ReactApplicationContext reactContext) {
         super(reactContext);
 
-        String appClientId = "590500460359-r840e25i8r6em0p9oo6g7o9s60q3hklk.apps.googleusercontent.com";
         this.activityContext = this.getCurrentActivity();
-        this.signInWithGoogleOption =  new GetSignInWithGoogleOption.Builder(appClientId)
-          .build();
-
-        this.request = new GetCredentialRequest.Builder()
-          .addCredentialOption(signInWithGoogleOption)
-          .build();
-
         this.credentialManager = CredentialManager.create(activityContext);
     }
 
@@ -115,7 +79,21 @@ public class RNGoogleSigninModule extends ReactContextBaseJavaModule implements 
     }
 
     @ReactMethod
-    public void configure(final ReadableMap config) {
+    public void configure(final ReadableMap config, Promise promise) {
+        try {
+            this.googleClientId = config.getString("googleclientid");
+
+            this.signInWithGoogleOption = new GetSignInWithGoogleOption.Builder(this.googleClientId)
+                    .build();
+
+            this.request = new GetCredentialRequest.Builder()
+                    .addCredentialOption(signInWithGoogleOption)
+                    .build();
+
+            promise.resolve(true);
+        } catch (Exception ex) {
+            promise.reject(ex.getMessage());
+        }
     }
 
     @ReactMethod
@@ -140,7 +118,7 @@ public class RNGoogleSigninModule extends ReactContextBaseJavaModule implements 
     }
 
     private String handleFailure(GetCredentialException e) {
-        Log.e("mar", "Unexpected type of credential" + e.getMessage());
+        Log.e("mar", e.getMessage());
         return e.getMessage();
     }
 

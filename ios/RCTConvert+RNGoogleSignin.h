@@ -3,7 +3,4 @@
 
 @interface RCTConvert(RNGoogleSignin)
 
-+ (GIDSignInButtonStyle)GIDSignInButtonStyle:(id)json;
-+ (GIDSignInButtonColorScheme)GIDSignInButtonColorScheme:(id)json;
-
 @end
