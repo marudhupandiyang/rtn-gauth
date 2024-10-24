@@ -1,13 +1,29 @@
-![React Native Google Sign In](img/header.png)
+# RTNGauth
 
-<p align="center">
-  <a href="https://www.npmjs.com/package/@react-native-google-signin/google-signin"><img src="https://badge.fury.io/js/@react-native-google-signin%2Fgoogle-signin.svg" alt="NPM Version"></a>
-</p>
+## Common Setup
 
-❤️❤️ [New documentation site available!](https://react-native-google-signin.github.io/docs/install) ❤️❤️
+  - Install package
 
-[website sources live here](https://github.com/react-native-google-signin/docs/tree/main/docs)
+        npm install github:marudhupandiyang/rtn-gauth#main
 
-## Licence
+  - Import in your Javascript as shown below
 
-(MIT)
+        import { GoogleSignin } from 'rtn-gauth';
+
+  - Call it in the place your require using
+
+
+        const res = await GoogleSignin.signIn();
+        console.log('result from res', res);
+
+## iOS Configuration
+- Follow the instructions from here -> https://developers.google.com/identity/sign-in/ios/sign-in#objective-c
+  - set GIDClient
+  - Set URL Types as described in the link above
+  - modify AppDelegate.mm as described in the doc.
+  - You can ignore all server and server token related items.
+
+## Android Configuration
+  - NO EXPLICT CONFIGURATION REQUIRED
+  - Sign in is impletemented using Credential Manager.
+  - Read this guide for more information -> https://developer.android.com/identity/sign-in/credential-manager
