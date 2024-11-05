@@ -5,6 +5,7 @@ import type { GetTokensResponse } from '../types';
 export interface Spec extends TurboModule {
   // using Object to be compatible with paper
   signIn(params: Object): Promise<Object>;
+  performRequest(params: Object): Promise<Object>;
   configure(params: Object): Promise<void>;
   addScopes(params: Object): Promise<Object | null>;
   playServicesAvailable(

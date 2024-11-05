@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A2A5EC72CDA0C7D00782B43 /* RCTConvert+ASAuthorizationAppleIDRequest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A5EBE2CDA0C7D00782B43 /* RCTConvert+ASAuthorizationAppleIDRequest.mm */; };
+		5A2A5EC82CDA0C7D00782B43 /* RNAppleAuth.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A5EC42CDA0C7D00782B43 /* RNAppleAuth.mm */; };
+		5A2A5EC92CDA0C7D00782B43 /* RCTConvert+RNGoogleSignin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A5EC22CDA0C7D00782B43 /* RCTConvert+RNGoogleSignin.mm */; };
+		5A2A5ECA2CDA0C7D00782B43 /* RNGoogleSignin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A5EC62CDA0C7D00782B43 /* RNGoogleSignin.mm */; };
+		5A2A5ECB2CDA0C7D00782B43 /* RCTConvert+RNAppleAuth.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A5EC02CDA0C7D00782B43 /* RCTConvert+RNAppleAuth.mm */; };
+		5A2A5ECC2CDA0C7D00782B43 /* AuthUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A5EBC2CDA0C7D00782B43 /* AuthUtils.mm */; };
+		5A2A5ECD2CDA0C7D00782B43 /* AuthDelegates.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A5EBA2CDA0C7D00782B43 /* AuthDelegates.mm */; };
 		A5D9E119CEFD16371B08CCEC /* Pods_GoogleSignin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37B96C70800FB02FBE033D63 /* Pods_GoogleSignin.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,9 +32,21 @@
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRTNGauth.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRTNGauth.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		37B96C70800FB02FBE033D63 /* Pods_GoogleSignin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleSignin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A2A5EB92CDA0C7D00782B43 /* AuthDelegates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthDelegates.h; sourceTree = "<group>"; };
+		5A2A5EBA2CDA0C7D00782B43 /* AuthDelegates.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AuthDelegates.mm; sourceTree = "<group>"; };
+		5A2A5EBB2CDA0C7D00782B43 /* AuthUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthUtils.h; sourceTree = "<group>"; };
+		5A2A5EBC2CDA0C7D00782B43 /* AuthUtils.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AuthUtils.mm; sourceTree = "<group>"; };
+		5A2A5EBD2CDA0C7D00782B43 /* RCTConvert+ASAuthorizationAppleIDRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RCTConvert+ASAuthorizationAppleIDRequest.h"; sourceTree = "<group>"; };
+		5A2A5EBE2CDA0C7D00782B43 /* RCTConvert+ASAuthorizationAppleIDRequest.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "RCTConvert+ASAuthorizationAppleIDRequest.mm"; sourceTree = "<group>"; };
+		5A2A5EBF2CDA0C7D00782B43 /* RCTConvert+RNAppleAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RCTConvert+RNAppleAuth.h"; sourceTree = "<group>"; };
+		5A2A5EC02CDA0C7D00782B43 /* RCTConvert+RNAppleAuth.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "RCTConvert+RNAppleAuth.mm"; sourceTree = "<group>"; };
+		5A2A5EC12CDA0C7D00782B43 /* RCTConvert+RNGoogleSignin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RCTConvert+RNGoogleSignin.h"; sourceTree = "<group>"; };
+		5A2A5EC22CDA0C7D00782B43 /* RCTConvert+RNGoogleSignin.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "RCTConvert+RNGoogleSignin.mm"; sourceTree = "<group>"; };
+		5A2A5EC32CDA0C7D00782B43 /* RNAppleAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNAppleAuth.h; sourceTree = "<group>"; };
+		5A2A5EC42CDA0C7D00782B43 /* RNAppleAuth.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RNAppleAuth.mm; sourceTree = "<group>"; };
+		5A2A5EC52CDA0C7D00782B43 /* RNGoogleSignin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNGoogleSignin.h; sourceTree = "<group>"; };
+		5A2A5EC62CDA0C7D00782B43 /* RNGoogleSignin.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RNGoogleSignin.mm; sourceTree = "<group>"; };
 		62DCCD2DAA3E71A6F51ABD12 /* Pods-GoogleSignin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleSignin.release.xcconfig"; path = "Target Support Files/Pods-GoogleSignin/Pods-GoogleSignin.release.xcconfig"; sourceTree = "<group>"; };
-		B3E7B5881CC2AC0600A0062D /* GoogleSignin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleSignin.h; sourceTree = "<group>"; };
-		B3E7B5891CC2AC0600A0062D /* GoogleSignin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleSignin.m; sourceTree = "<group>"; };
 		C43008EE670FAA7085BFA22D /* Pods-GoogleSignin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleSignin.debug.xcconfig"; path = "Target Support Files/Pods-GoogleSignin/Pods-GoogleSignin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,8 +82,20 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				B3E7B5881CC2AC0600A0062D /* GoogleSignin.h */,
-				B3E7B5891CC2AC0600A0062D /* GoogleSignin.m */,
+				5A2A5EB92CDA0C7D00782B43 /* AuthDelegates.h */,
+				5A2A5EBA2CDA0C7D00782B43 /* AuthDelegates.mm */,
+				5A2A5EBB2CDA0C7D00782B43 /* AuthUtils.h */,
+				5A2A5EBC2CDA0C7D00782B43 /* AuthUtils.mm */,
+				5A2A5EBD2CDA0C7D00782B43 /* RCTConvert+ASAuthorizationAppleIDRequest.h */,
+				5A2A5EBE2CDA0C7D00782B43 /* RCTConvert+ASAuthorizationAppleIDRequest.mm */,
+				5A2A5EBF2CDA0C7D00782B43 /* RCTConvert+RNAppleAuth.h */,
+				5A2A5EC02CDA0C7D00782B43 /* RCTConvert+RNAppleAuth.mm */,
+				5A2A5EC12CDA0C7D00782B43 /* RCTConvert+RNGoogleSignin.h */,
+				5A2A5EC22CDA0C7D00782B43 /* RCTConvert+RNGoogleSignin.mm */,
+				5A2A5EC32CDA0C7D00782B43 /* RNAppleAuth.h */,
+				5A2A5EC42CDA0C7D00782B43 /* RNAppleAuth.mm */,
+				5A2A5EC52CDA0C7D00782B43 /* RNGoogleSignin.h */,
+				5A2A5EC62CDA0C7D00782B43 /* RNGoogleSignin.mm */,
 				134814211AA4EA7D00B7C361 /* Products */,
 				14C9064F0686B69B65A8B86B /* Pods */,
 				7D4AE6E3FD03F46141101023 /* Frameworks */,
@@ -162,6 +193,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A2A5EC72CDA0C7D00782B43 /* RCTConvert+ASAuthorizationAppleIDRequest.mm in Sources */,
+				5A2A5EC82CDA0C7D00782B43 /* RNAppleAuth.mm in Sources */,
+				5A2A5EC92CDA0C7D00782B43 /* RCTConvert+RNGoogleSignin.mm in Sources */,
+				5A2A5ECA2CDA0C7D00782B43 /* RNGoogleSignin.mm in Sources */,
+				5A2A5ECB2CDA0C7D00782B43 /* RCTConvert+RNAppleAuth.mm in Sources */,
+				5A2A5ECC2CDA0C7D00782B43 /* AuthUtils.mm in Sources */,
+				5A2A5ECD2CDA0C7D00782B43 /* AuthDelegates.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,6 +2,8 @@
 #import <React/RCTUtils.h>
 #import <GoogleSignIn/GoogleSignIn.h>
 #import "RNGoogleSignin.h"
+#import "AuthenticationServices/ASAuthorizationAppleIDProvider.h"
+#import "AuthenticationServices/ASAuthorizationController.h"
 
 @implementation RNGoogleSignin
 
@@ -45,7 +47,7 @@ RCT_EXPORT_METHOD(configure:(NSDictionary *)options
                   resolve:(RCTPromiseResolveBlock)resolve
                   reject:(RCTPromiseRejectBlock)reject)
 {
-  resolve(true);
+  resolve(@"done");
 }
 
 RCT_EXPORT_METHOD(signIn:(NSDictionary *)options
