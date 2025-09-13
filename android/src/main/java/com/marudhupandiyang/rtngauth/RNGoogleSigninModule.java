@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.credentials.Credential;
 import androidx.credentials.CredentialManager;
 import androidx.credentials.CredentialManagerCallback;
@@ -13,6 +14,11 @@ import androidx.credentials.GetCredentialResponse;
 import androidx.credentials.PasswordCredential;
 import androidx.credentials.PublicKeyCredential;
 import androidx.credentials.exceptions.GetCredentialException;
+import java.util.Map;
+import java.util.HashMap;
+import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.gms.auth.api.signin.GoogleSignInStatusCodes;
+import com.google.android.gms.common.SignInButton;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Promise;
@@ -28,9 +34,11 @@ import com.facebook.react.turbomodule.core.interfaces.TurboModule;
 import com.facebook.react.bridge.ReactModuleWithSpec;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 
+
 public class RNGoogleSigninModule extends ReactContextBaseJavaModule implements ReactModuleWithSpec, TurboModule {
   public static final String NAME = "RNGoogleSignin";
   public static final String PLAY_SERVICES_NOT_AVAILABLE = "PLAY_SERVICES_NOT_AVAILABLE";
+    public static final String ASYNC_OP_IN_PROGRESS = "ASYNC_OP_IN_PROGRESS";
 
   private Activity activityContext;
   private GetSignInWithGoogleOption signInWithGoogleOption;
@@ -160,4 +168,21 @@ public class RNGoogleSigninModule extends ReactContextBaseJavaModule implements 
         }
         return null;
     }
+
+    @Override
+  public final @Nullable Map<String, Object> getConstants() {
+    final Map<String, Object> constants = new HashMap<>();
+        constants.put("BUTTON_SIZE_ICON", SignInButton.SIZE_ICON_ONLY);
+        constants.put("BUTTON_SIZE_STANDARD", SignInButton.SIZE_STANDARD);
+        constants.put("BUTTON_SIZE_WIDE", SignInButton.SIZE_WIDE);
+        constants.put("SIGN_IN_CANCELLED", String.valueOf(GoogleSignInStatusCodes.SIGN_IN_CANCELLED));
+        constants.put("SIGN_IN_REQUIRED", String.valueOf(CommonStatusCodes.SIGN_IN_REQUIRED));
+        constants.put("SCOPES_ALREADY_GRANTED", "NEVER_HAPPENS_ON_ANDROID");
+        constants.put("ONE_TAP_START_FAILED", "ONE_TAP_START_FAILED");
+        constants.put("NO_SAVED_CREDENTIAL_FOUND", "NO_SAVED_CREDENTIAL_FOUND");
+        constants.put("IN_PROGRESS", ASYNC_OP_IN_PROGRESS);
+        constants.put(PLAY_SERVICES_NOT_AVAILABLE, PLAY_SERVICES_NOT_AVAILABLE);
+
+        return constants;
+  }
 }
