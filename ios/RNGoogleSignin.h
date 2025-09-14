@@ -1,7 +1,7 @@
 #import <React/RCTComponent.h>
 
 #ifdef RCT_NEW_ARCH_ENABLED
-  #import <RNGoogleSignInCGen/RNGoogleSignInCGen.h>
+  #import <RTNGauthSpec/RTNGauthSpec.h>
 #else
   #import <React/RCTBridgeModule.h>
 #endif
