@@ -34,7 +34,6 @@ import com.facebook.react.turbomodule.core.interfaces.TurboModule;
 import com.facebook.react.bridge.ReactModuleWithSpec;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 
-
 public class RNGoogleSigninModule extends ReactContextBaseJavaModule implements ReactModuleWithSpec, TurboModule {
   public static final String NAME = "RNGoogleSignin";
   public static final String PLAY_SERVICES_NOT_AVAILABLE = "PLAY_SERVICES_NOT_AVAILABLE";

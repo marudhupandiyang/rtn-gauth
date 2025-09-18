@@ -10,6 +10,7 @@ import {
   User,
 } from '../types';
 import { NativeModule } from '../spec/NativeGoogleSignin';
+import { NativeModuleApple } from '../spec/NativeAppleAuth';
 import {
   ios_only_SCOPES_ALREADY_GRANTED,
   SIGN_IN_REQUIRED_CODE,
@@ -60,6 +61,18 @@ async function signIn(options: SignInParams = {}): Promise<SignInResponse> {
     return translateCancellationError(err);
   }
 }
+
+
+async function signInApple(options = {}): Promise<SignInResponse> {
+  await configPromise;
+  try {
+    const user = (await NativeModuleApple.performRequest(options)) as User;
+    return createSuccessResponse(user);
+  } catch (err) {
+    return translateCancellationError(err);
+  }
+}
+
 
 async function hasPlayServices(
   options?: HasPlayServicesParams,
@@ -198,4 +211,5 @@ export const GoogleSignin = {
   getCurrentUser,
   clearCachedAccessToken,
   getTokens,
+  signInApple,
 };
