@@ -18,7 +18,6 @@
 
 ## iOS Configuration
 - Follow the instructions from here -> https://developers.google.com/identity/sign-in/ios/sign-in#objective-c
-  - set GIDClient
   - Set URL Types as described in the link above
   - modify AppDelegate.mm as described in the doc.
   - You can ignore all server and server token related items.
